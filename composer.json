@@ -1,0 +1,41 @@
+{
+    "name": "liudu/think-plugins",
+    "description": "The ThinkPHP6 plugins Package",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "xiancai",
+            "email": "1130417821@qq.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2.5",
+        "topthink/framework": "^6.0",
+        "topthink/think-view": "^1.0",
+        "topthink/think-helper": "^3.0.0",
+        "topthink/think-multi-app":"^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "think\\": "src/"
+        },
+        "files": [
+            "src/helper.php"
+        ]
+    },
+    "extra": {
+        "think": {
+            "services": [
+                "think\\plugins\\Service"
+            ],
+            "config":{
+                "plugins": "src/config.php"
+            }
+        }
+    },
+    "scripts" : {
+        "post-install-cmd": [
+            "php think plugins:config"
+        ]
+    }
+}
