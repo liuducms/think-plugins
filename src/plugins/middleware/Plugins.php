@@ -22,7 +22,7 @@ class Plugins
      */
     public function handle($request, \Closure $next)
     {
-        hook('addon_middleware', $request);
+        hook('plugin_middleware', $request);
 
         return $next($request);
     }
