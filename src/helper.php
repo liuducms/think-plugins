@@ -124,7 +124,7 @@ if (!function_exists('get_plugins_class')) {
                 $namespace = '\\plugins\\' . $name . '\\controller\\' . $class;
                 break;
             default:
-                $namespace = '\\plugins\\' . $name . '\\Plugin';
+                $namespace = '\\plugins\\' . $name . '\\Init';
         }
 
         return class_exists($namespace) ? $namespace : '';
