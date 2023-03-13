@@ -175,7 +175,7 @@ class Service extends \think\Service
             // 获取插件目录名
             $name = pathinfo($info['dirname'], PATHINFO_FILENAME);
             // 找到插件入口文件
-            if (strtolower($info['filename']) === 'plugin') {
+            if (strtolower($info['filename']) === 'Init') {
                 // 读取出所有公共方法
                 $methods = (array)get_class_methods("\\plugins\\" . $name . "\\" . $info['filename']);
                 // 跟插件基类方法做比对，得到差异结果
