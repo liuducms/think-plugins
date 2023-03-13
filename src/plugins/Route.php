@@ -14,16 +14,17 @@ class Route
      * 插件路由请求
      * @return mixed
      */
-    public static function execute()
+    public static function execute($plugin = null, $controller = null, $action = null)
     {
-        $app = app();
+         $app = app();
         $request = $app->request;
+        $convert = Config::get('route.url_convert');
+        $filter = $convert ? 'strtolower' : 'trim';
+        $plugin = $plugin ? trim(call_user_func($filter, $plugin)) : '';
+        $controller = $controller ? trim(call_user_func($filter, $controller)) : env('plugin.controller');
+        $action = $action ? trim(call_user_func($filter, $action)) : env('plugin.action');
 
-        $plugin = $request->route('plugin');
-        $controller = $request->route('controller');
-        $action = $request->route('action');
-
-        Event::trigger('plugins_begin', $request);
+        Event::trigger('plugin_begin', $request);
 
         if (empty($plugin) || empty($controller) || empty($action)) {
             throw new HttpException(500, lang('plugin can not be empty'));
@@ -68,7 +69,7 @@ class Route
             // 操作不存在
             throw new HttpException(404, lang('plugin action %s not found', [get_class($instance).'->'.$action.'()']));
         }
-        Event::trigger('plugins_action_begin', $call);
+        Event::trigger('plugin_action_begin', $call);
 
         return call_user_func_array($call, $vars);
     }
