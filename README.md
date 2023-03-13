@@ -1,5 +1,5 @@
 # think-plugins
-The ThinkPHP 6 plugins Package
+plugins package for liudu
 
 ## 安装
 > composer require liudu/think-plugins
