@@ -1,6 +1,6 @@
 {
     "name": "liudu/think-plugins",
-    "description": "The ThinkPHP6 plugins Package",
+    "description": "The plugins for liudu",
     "license": "Apache-2.0",
     "authors": [
         {
