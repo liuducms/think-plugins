@@ -9,7 +9,7 @@ use think\facade\Config;
 use think\facade\Lang;
 use think\facade\Cache;
 use think\facade\Event;
-use think\plugins\middleware\plugins;
+use think\plugins\middleware\Plugins;
 
 /**
  * 插件服务
